@@ -14,3 +14,55 @@ greetUser(userName);
 
  return 0;   
 }
+
+
+#include <iostream>
+
+void findMax(int a, int b){
+    
+   if (a > b){
+    std::cout << "The gratest number is: " << a << std::endl;
+   }
+  else if (a < b){
+    std::cout << "The greatest number is: " << b << std::endl;   
+   }
+ 
+}
+
+int main() {
+    int num1, num2;
+    
+    std::cout <<"Enter first number: ";
+    std::cin >> num1;
+    
+    std::cout <<"Enter second number: ";
+    std::cin >> num2;
+    
+    findMax(num1, num2);
+
+ return 0;   
+}
+
+
+#include <iostream>
+
+void isEven(int number){
+    
+    if(number % 2 == 0){
+        std::cout << "True" << std::endl;
+    }
+    else if (number % 2 != 0){
+        std::cout << "False" << std::endl;
+    }
+}
+
+int main(){
+    int number;
+    
+    std::cout <<"Enter you number: ";
+    std::cin >> number;
+    
+    isEven(number);
+    
+ return 0;   
+}
