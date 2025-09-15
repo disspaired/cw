@@ -1,0 +1,16 @@
+#include <iostream>
+
+void greetUser( std::string name) {
+ std::cout << "Hello,"  << name << "! Welcome! " << std::endl;  
+}
+
+int main() {
+std::string userName;
+
+std::cout << "Enter your name: ";
+std::cin >> userName;
+
+greetUser(userName);
+
+ return 0;   
+}
