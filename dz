@@ -60,6 +60,46 @@ void task_7() {
     std::cout << "Counter: " << counter << std::endl;
 }
 
+#include <iostream>
+using namespace std;
+
+void task_8() {
+    double number;
+    cout << "Enter a number: ";
+    cin >> number;
+
+    double result = number * number;
+
+    cout << "The result of squaring: " << result << endl;
+}
+
+#include <iostream>
+using namespace std;
+
+void task_9() {
+    
+    int score = 100;
+ 
+    score += 15;
+
+    cout << "Updated score: " << score << endl;
+}
+
+#include <iostream>
+#include <iomanip>  
+using namespace std;
+
+void task_10() {
+    
+    double price;
+    cout << "Enter the product price: ";
+    cin >> price;
+
+    
+    cout << fixed << setprecision(2); 
+    cout << "Price: " << price << endl;
+}
+
 int main() {
     task_2();
     task_1();
@@ -68,6 +108,8 @@ int main() {
     task_5();
     task_6();
     task_7();
-
+    task_8();
+    task_9();
+    task_10();
     return 0;
 }
