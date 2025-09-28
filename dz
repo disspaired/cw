@@ -1,115 +1,168 @@
 #include <iostream>
+#include <iomanip>
+#include <cstdlib> 
+#include <ctime>  
+void n_1(){
+double length, width;
 
-void task_1() {
-    std::cout <<"Hello, World!" << std::endl;
+    std::cout << "Enter the length of the rectangle: ";
+    std::cin >> length;
+
+    std::cout << "Enter the width of the rectangle: ";
+    std::cin >> width;
+
+    double area = length * width;
+    double perimeter = 2 * (length + width);
+
+    std::cout << "The area of the rectangle: " << area << std::endl;
+    std::cout << "The perimeter of a rectangle: " << perimeter << std::endl;
 }
+void n_2(){
+    const double USD_RATE = 83.59;
+    const double EUR_RATE = 88.0;
+    double rubles;
 
-void task_2() {
-    int x = 5;
-    std::cout << "x = " << x << std::endl;
+    std::cout << "Enter the amount in rubles: ";
+    std::cin >> rubles;
+
+    double dollars = rubles / USD_RATE;
+    double euros = rubles / EUR_RATE;
+
+    std::cout << std::fixed << std::setprecision(2);
+
+    std::cout << "Equivalent in dollars: $" << dollars << std::endl;
+    std::cout << "Equivalent in euros: €" << euros << std::endl;
 }
+void n_3(){
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
-void task_3() {
-    int age;
-        std::cout << "Enter your age: ";
-        std::cin >> age; 
-        std::cout << "Your " << age << " age" << std::endl;
+    int randomNumber = std::rand() % 100;
+    int userGuess;
+
+    std::cout << "Guess a number between 0 and 99: ";
+    std::cin >> userGuess;
+
+    if (userGuess == randomNumber) {
+        std::cout << "true\n";
+    } else {
+        std::cout << "false\n";
+    }  
 }
+ void n_4(){
+     char inputChar;
 
-void task_4() {
-    int num1, num2, sum;
+    std::cout << "Enter any character: ";
+    std::cin >> inputChar;
 
-    std::cout << "Enter two number: ";
-    std::cin >> num1 >> num2;
+    int asciiCode = static_cast<int>(inputChar);
+    std::cout << "ASCII-character code '" << inputChar << "': " << asciiCode << std::endl;
 
-    sum = num1 + num2;
+    int newAsciiCode = asciiCode + 1;
+    char newChar = static_cast<char>(newAsciiCode);
 
-    std::cout << "Sum: " << sum << std::endl;
-}
+    std::cout << "The next character in the table ASCII: '" << newChar << "'" << std::endl; 
+ }     
+   void n_5(){
+    int totalMinutes;
 
-void task_5() {
-     const double PI = 3.14159265358979323846; 
-     
-    double radius; 
+    std::cout << "Enter the number of minutes: ";
+    std::cin >> totalMinutes;
 
-    std::cout << "Enter radius: "; 
-    std::cin >> radius;
+    int hours = totalMinutes / 60; 
+    int minutes = totalMinutes % 60;
 
-    double circumference = 2 * PI * radius; 
+    std::cout << totalMinutes << " minutes = " << hours << " hours " << minutes << " minutes" << std::endl;   
+   }       
+  void n_6(){
+    int number;
 
-    std::cout << "Weight: " << circumference << std::endl;
-}
+    std::cout << "Enter number: ";
+    std::cin >> number;
 
-void task_6() {
-    int a = 10;
-    int b = 3;
+    bool inFirstRange = (number >= 0 && number <= 10);
+    bool inSecondRange = (number >= 5 && number <= 15);
 
-    int quotient = a / b;
-    int remainder = a % b;
+    if (inFirstRange && inSecondRange) {
+        std::cout << number << " belongs to the intervals [0, 10] and [5, 15]" << std::endl;
+    } else {
+        std::cout << number << " it does not belong to both intervals [0, 10] and [5, 15]" << std::endl;
+    }   
+  } 
+  void n_7(){
+     int x = 5;
+    int y = 10;
 
-    std::cout << "a / b: " << quotient << std::endl;
-    std::cout << "a % b: " << remainder << std::endl;
-}
+    std::cout << "Before the exchange: " << std::endl;
+    std::cout << "x = " << x << ", y = " << y << std::endl;
 
-void task_7() {
-    int counter = 0;
+    int temp = x;
+    x = y;
+    y = temp;
 
-    for (int i = 0; i < 5; ++i) {
-        counter++; 
-    }
-    std::cout << "Counter: " << counter << std::endl;
-}
-
-#include <iostream>
-using namespace std;
-
-void task_8() {
-    double number;
-    cout << "Enter a number: ";
-    cin >> number;
-
-    double result = number * number;
-
-    cout << "The result of squaring: " << result << endl;
-}
-
-#include <iostream>
-using namespace std;
-
-void task_9() {
-    
-    int score = 100;
+    std::cout << "After the exchange: " << std::endl;
+    std::cout << "x = " << x << ", y = " << y << std::endl;  
+  }  
+  void n_8(){
+double num1, num2, num3;
  
-    score += 15;
+    std::cout << "Enter the first number: ";
+    std::cin >> num1;
+    std::cout << "Enter the second number: ";
+    std::cin >> num2;
+    std::cout << "Enter the third number: ";
+    std::cin >> num3;
 
-    cout << "Updated score: " << score << endl;
-}
+    double average = (num1 + num2 + num3) / 3;
 
-#include <iostream>
-#include <iomanip>  
-using namespace std;
+    std::cout << "Arithmetic mean (integer): " << static_cast<int>(average) << std::endl;
+    std::cout << "Arithmetic mean (fractional): " << average << std::endl;
+  }      
+  void n_9(){
+    double a, b;
+  
+    std::cout << "Enter the coefficient a: ";
+    std::cin >> a;
+    std::cout << "Enter the coefficient b: ";
+    std::cin >> b;
 
-void task_10() {
-    
-    double price;
-    cout << "Enter the product price: ";
-    cin >> price;
-
-    
-    cout << fixed << setprecision(2); 
-    cout << "Price: " << price << endl;
-}
-
-int main() {
-    task_2();
-    task_1();
-    task_3();
-    task_4();
-    task_5();
-    task_6();
-    task_7();
-    task_8();
-    task_9();
-    task_10();
+    if (a == 0) {
+        if (b == 0) {
+            std::cout << "The equation has infinitely many solutions" << std::endl;
+        } else {
+            std::cout << "The equation has no solutions" << std::endl;
+        }
+    } else {
+        double x = -b / a;
+        std::cout << "The root of the equation: x = " << x << std::endl;
+    }   
+  }      
+  void n_10(){
+      std::string name;
+    int age;
+    double favoriteNumber;
+ 
+    std::cout << "Enter your name: ";
+    std::getline(std::cin, name);
+ 
+    std::cout << "Enter your age: ";
+    std::cin >> age;
+  
+    std::cout << "Enter your favorite number: ";
+    std::cin >> favoriteNumber;
+ 
+    std::cout << "Hello, " << name << "! To you " << age 
+              << " What's your favorite number? — " << favoriteNumber << "." << std::endl;
+    }
+int main(){
+    n_1();
+    n_2();
+    n_3();
+    n_4();
+    n_5();
+    n_6();
+    n_7();
+    n_8();
+    n_9();
+    n_10();
     return 0;
 }
