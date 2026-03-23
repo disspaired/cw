@@ -45,72 +45,64 @@
 //}
 
 //Задание 2
-// Функция f(x) = 2 ln x + 2x - 3
+// Исходная функция для метода дихотомии
 double f(double x) {
     return 2 * log(x) + 2 * x - 3;
 }
 
-// Реализация метода дихотомии
+// Преобразованная функция x = phi(x) для метода итераций
+// phi(x) = 1.5 - ln(x)
+double phi(double x) {
+    return 1.5 - log(x);
+}
+
 double bisection(double a, double b, double eps) {
     double c;
     while ((b - a) / 2.0 > eps) {
         c = (a + b) / 2.0;
-
-        // Если f(c) и f(a) разных знаков, корень в левой половине
-        if (f(a) * f(c) < 0) {
-            b = c;
-        }
-        else {
-            a = c;
-        }
+        if (f(a) * f(c) < 0) b = c;
+        else a = c;
     }
     return (a + b) / 2.0;
 }
 
 int main() {
-    char* locale = setlocale(LC_ALL, "");
-    double eps = 0.001; // Точность
+    setlocale(LC_ALL, "");
 
-    // Известные отрезки локализации
-    double a1 = 1.0, b1 = 2.0;
-
+    // 1. Метод дихотомии
+    double eps_bis = 0.001;
     std::cout << std::fixed << std::setprecision(4);
+    std::cout << "Метод дихотомии: " << bisection(1.0, 2.0, eps_bis) << "\n\n";
 
-    std::cout << "Корень на отрезке [" << a1 << ", " << b1 << "]: "
-        << bisection(a1, b1, eps) << std::endl;
-
-    double x0 = 1.5;           // Начальная точка на отрезке [1, 2]
-    double epsilon = 0.000001; // Точность
+    // 2. Метод простой итерации (исправленный)
+    double x0 = 1.5;
+    double epsilon = 0.000001;
     double x_next;
     int step = 0;
 
-    // Настройка вывода без iomanip
-    std::cout.precision(6);
-    std::cout.setf(std::ios::fixed);
-
+    std::cout << "Метод итераций (x = 1.5 - ln(x)):\n";
     std::cout << "Step\tValue\n";
 
     while (true) {
-        x_next = f(x0);
+        // Теперь используем phi(x), где производная < 1
+        x_next = phi(x0);
         step++;
 
-        std::cout << step << "\t" << x_next << "\n";
+        std::cout << step << "\t" << std::setprecision(6) << x_next << "\n";
 
-        // Проверка условия остановки |x_n - x_{n-1}| < eps
         if (std::abs(x_next - x0) < epsilon) {
             break;
         }
 
         x0 = x_next;
 
-        // Предохранитель от бесконечного цикла
-        if (step > 10) {
+        if (step > 100) { // Увеличим лимит, так как сходимость может быть плавной
             std::cout << "Метод не сходится\n";
             return 1;
         }
     }
 
-    std::cout << "\nКорень на отрезке[1, 2]: " << x_next << "\n";
+    std::cout << "\nИтоговый корень: " << x_next << "\n";
 
     return 0;
 }
